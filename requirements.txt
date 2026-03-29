@@ -2,7 +2,7 @@ black==26.3.1
 click==8.3.1
 cloudpickle==3.1.2
 colorama==0.4.6
-contourpy==1.3.3
+contourpy
 cycler==0.12.1
 decorator==5.2.1
 Farama-Notifications==0.0.4
@@ -20,10 +20,10 @@ matplotlib==3.10.8
 moviepy==2.2.1
 mpmath==1.3.0
 mypy_extensions==1.1.0
-networkx==3.6.1
-numpy==2.4.3
+networkx
+numpy
 packaging==26.0
-pandas==3.0.1
+pandas
 pathspec==1.0.4
 pillow==11.3.0
 platformdirs==4.9.4
@@ -33,7 +33,7 @@ pyparsing==3.3.2
 python-dateutil==2.9.0.post0
 python-dotenv==1.2.2
 pytokens==0.4.1
-scipy==1.17.1
+scipy
 six==1.17.0
 stable_baselines3==2.7.1
 sympy==1.14.0
