@@ -77,7 +77,7 @@ def create_phantom_jam_env():
             "duration": 50,
             # 🎯 [State] 에이전트 주변 차량 2D 행렬 추출 (Kinematic Observation)
             "observation": {
-                "type": "Kinematic",
+                "type": "Kinematics",
                 # 관측할 피처: 존재 여부, x좌표, y좌표, x축 속도, y축 속도
                 "features": ["presence", "x", "y", "vx", "vy"],
                 # 에이전트 자신을 포함해 주변에서 가장 가까운 N대의 차량 관측
@@ -100,22 +100,31 @@ def create_phantom_jam_env():
 
 
 if __name__ == "__main__":
+    import numpy as np
+
+    np.set_printoptions(precision=3, suppress=True)
+
     print("4주 차 환경 디버깅을 시작합니다...")
     env = create_phantom_jam_env()
 
-    # 환경 초기화 (State 통신 테스트)
+    # 1. 환경 초기화 (State 통신 테스트)
     obs, info = env.reset()
-    print(f"✅ Observation Space 형태 (State): {obs.shape}")
+    print(f"\n✅ Observation Space 형태 (State): {obs.shape}")
     print(f"✅ Action Space 형태: {env.action_space}")
 
-    # 에이전트에게 5가지 행동 중 무작위 행동을 시키며 10스텝만 테스트
-    for _ in range(10):
-        # env.action_space.sample()은 0~4 사이의 랜덤 정수를 반환
-        random_action = env.action_space.sample()
-        obs, reward, terminated, truncated, info = env.step(random_action)
+    # 2. State 행렬 상세 분석 출력
+    print("\n[에이전트가 관측한 초기 State (15대 차량 x 5개 피처)]")
+    print("Columns: [존재여부(1=True), x좌표, y좌표, x축속도, y축속도]")
+    print("-" * 50)
+    print(obs)
+    print("-" * 50)
 
-        if terminated or truncated:
-            break
+    # 에이전트에게 무작위 행동을 시키며 1스텝만 진행해보기
+    random_action = env.action_space.sample()
+    print(f"\n에이전트가 선택한 무작위 행동(Action): {random_action}")
+
+    obs, reward, terminated, truncated, info = env.step(random_action)
+    print(f"충돌(Terminated) 여부: {terminated}")
 
     env.close()
     print("디버깅 완료! State와 Action이 Gym 인터페이스와 정상 통신합니다.")
