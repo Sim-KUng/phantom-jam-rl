@@ -1,9 +1,10 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import os
 
 
 def plot_speed_degradation(
-    csv_file="baseline_log.csv", output_img="speed_degradation.png"
+    csv_file="logs/baseline_log.csv", output_img="results/speed_degradation.png"
 ):
     print(f"[{csv_file}] 데이터를 분석합니다...")
 
@@ -46,6 +47,7 @@ def plot_speed_degradation(
     plt.tight_layout()
 
     # 5. 고화질(dpi=300) 이미지로 저장
+    os.makedirs(os.path.dirname(output_img), exist_ok=True)
     plt.savefig(output_img, dpi=300)
     print(f"✅ 그래프가 성공적으로 저장되었습니다: {output_img}")
 

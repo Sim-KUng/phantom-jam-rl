@@ -3,6 +3,7 @@ import highway_env
 from highway_env.vehicle.behavior import IDMVehicle
 import pandas as pd
 import pprint
+import os
 
 
 def run_baseline_simulation():
@@ -79,7 +80,8 @@ def run_baseline_simulation():
 
     # 4. 수집된 데이터를 CSV 파일로 저장
     df = pd.DataFrame(log_data)
-    df.to_csv("baseline_log.csv", index=False)
+    os.makedirs("logs", exist_ok=True)
+    df.to_csv("logs/baseline_log.csv", index=False)
 
     print("시뮬레이션 완료!")
     print(f"총 {step_count} 스텝의 로그가 'baseline_log.csv' 파일로 저장되었습니다.")
