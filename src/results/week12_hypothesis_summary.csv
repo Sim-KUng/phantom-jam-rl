@@ -1,0 +1,4 @@
+penetration_rate,lane_change_reduction_pct,hard_brake_reduction_pct,congestion_time_reduction_pct,throughput_improvement_pct,avg_speed_improvement_pct,crashed_count_mean,hypothesis_result
+0,0.0,0.0,,0.0,0.0,2.0,baseline
+5,-300.0,-15.498991935483872,,125.0,-13.72157290509947,3.4,not_supported
+10,-590.0,-17.641129032258064,,139.2857142857143,-8.461473024347704,7.2,not_supported
